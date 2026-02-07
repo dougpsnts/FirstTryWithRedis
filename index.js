@@ -13,16 +13,16 @@ client.on('error', (err) => console.log('Erro no Redis Client', err));
 
 async function startServer() {
     await client.connect();
-    console.log('Conectado ao Redis!');
+    console.log('Conected to Redis!');
  
     app.get('/', async (req, res) => {
         // A simple counter to track visits
-        const visitas = await client.incr('contador_visitas');
-        res.send(`Olá! Esta página foi visitada ${visitas} vezes.`);
+        const visitas = await client.incr('Visits Counter');
+        res.send(`Hi there! This page has been visited ${visitas} times.`);
     });
  
     app.listen(port, () => {
-        console.log(`Servidor rodando em http://localhost:${port}`);
+        console.log(`Server running at http://localhost:${port}`);
     });
 }
  
